@@ -73,26 +73,42 @@
 
       // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
+      //filter() method is being used on the inventors array.
+      //the i parameter is being used to represent each object in the array. In this case the yearof each inventor.
       const inventorsBornIn1550s = inventors.filter(i => i.year >= 1500 && i.year < 1600);
       console.log(inventorsBornIn1550s);
 
       // Array.prototype.map()
       // 2. Give us an array of the inventors' first and last names
+      //map() method is being used on the inventors array.
+      //the i parameter is being used to represent each object in the array. In this case the first and last name of each inventor.
+      //literals are being used to return the first and last name of each inventor.
       const inventorsFirstLast = inventors.map(i => `${i.first} ${i.last}`);
       console.log(inventorsFirstLast);
 
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
+      //JSON.parse() method is being used to parse data into JavaScript Object.
+      //JSON.stringify() method is being used to convert a JavaScript object into a string.
+      //sort() method is being used on the inventors array.
+      //the a and b parameters are being used to represent each object in the array. In this case the year of each inventor.
       const inventorsDeepCopy1 = JSON.parse(JSON.stringify(inventors));
       inventorsDeepCopy1.sort((a, b) => a.year - b.year);
       console.log(inventorsDeepCopy1);
 
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live?
+      //map() method is being used on the inventors array.
+      //the i parameter is being used to represent year born and year passed of each inventor.
+      //reduce() method on the result of the map() method.
+      //the p, c parameters are being used to represent the previous and current value of the array.
       const totalYearsLived = inventors.map(i => i.passed - i.year).reduce((p, c) => p + c, 0);
       console.log(totalYearsLived);
       
       // 5. Sort the inventors by years lived
+      //JSON.parse() method is being used to parse data into JavaScript Object.
+      //JSON.stringify() method is being used to convert a JavaScript object into a string.
+      //sort() method is subtracting the year passed from the year born of each inventor. then sorting the result from highest to lowest.
       const inventorsDeepCopy2 = JSON.parse(JSON.stringify(inventors));
       inventorsDeepCopy2.sort((a, b) => (b.passed - b.year) - (a.passed - a.year));
       console.log(inventorsDeepCopy2);

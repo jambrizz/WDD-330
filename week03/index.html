@@ -11,6 +11,84 @@
 <body>
     <div class="main-header">
         <h1>Week 03 Notes</h1>
+        <h3>"this" in methods</h3>
+        <p>
+            It’s common that an object method needs to access the information stored in the object to do its job.<br>
+For instance, the code inside user.sayHi() may need the name of the user.
+To access the object, a method can use the this keyword.
+The value of this is the object “before dot”, the one used to call the method.<br><br>
+let user = {<br>
+    name:"John",<br>
+    age:30,<br><br>
+    sayHi() {<br>
+        // "this" is the "current object"<br>
+        alert(this.name);<br>
+        }<br>
+        };<br>
+        user.sayHi();<br>
+        // John<br><br>
+        <strong>Summary</strong>
+        <ul>
+            <li>Functions that are stored in object properties are called “methods”.</li>
+            <li>Methods allow objects to “act” like object.doSomething().</li>
+            <li>Methods can reference the object as this. The value of this is defined at run-time.</li>
+            <li>When a function is declared, it may use this, but that this has no value until the function is called.
+            </li>
+            <li>A function can be copied between objects.</li>
+            <li>When a function is called in the “method” syntax: object.method(), the value of this during the call is object.</li>
+        </ul>
+    </p>
+    <h3>Chapter 5: objects</h3>
+    <h4>Object Literals</h4>
+    <p>
+        An object in JavaScript is a self-contained set of related values and functions. They act as a collection of named properties that map to any JavaScript value such as strings, numbers, booleans, arrays and functions. If a property’s value is a function, it is known as a method.<br><br>
+
+ 
+One way to think about an object is that it’s like a dictionary where you look up a property name and see a value. It's like a database of values (in fact, some databases use JavaScript objects to store information).<br><br>
+
+An object literal is an object that is created directly in the language by wrapping all its properties and methods in curly braces {}. Object literals are a distinguishing feature of the JavaScript language, as they allow objects to be created quickly without the need for defining a class. They also provide a useful way of organizing your code without polluting the global namespace.<br><br>
+    </p>
+    <h4>Creating Objects</h4>
+    <p>
+        To create an object literal, simply enter a pair of curly braces<br><br>
+
+const spiderman = {};<br>
+
+Also:<br>
+
+const spiderman = new Object();<br>
+    </p>
+    <h3>Chapter 6: Document Object Model</h3>
+    <p>The Document Object Model, or DOM for short, represents an HTML document as a network of connected nodes that form a tree-like structure.<br>
+        The DOM treats everything on a web page as a node. HTML tags, the text inside these tags, even the attributes of a tag are all nodes. The HTML tag is the root node, and every other part of the document is a child node of this.</p>
+        <p>The DOM provides several methods that allow us to access any element on a page. These methods will return a node object or a node list, which is an array-like object. These objects can then be assigned to a variable and be inspected or modified.</p>
+        <h4>Legacy DOM Shortcut Methods</h4>
+        <p>
+            The DOM provides several methods that allow us to access any element on a page. These methods will return a node object or a node list, which is an array-like object. These objects can then be assigned to a variable and be inspected or modified.
+        </p>
+        <p>
+            There are some methods from DOM Level 0 that can still be employed to access commonly used elements. These include:<br><br>
+            <ul>
+                <li>Document.body returns the body element of a web page</li>
+                <li>Document.images returns a node list of all the images contained in the document.</li>
+                <li>Document.links returns a node list of all the a tag elements and area tag elements that have an href attribute.</li>
+                <li>Document.anchors returns a node list of all the a tag elements that have a name attribute.
+                </li>
+                <li>Document.forms returns a node list of all the forms in the document.</li>
+            </ul>
+        </p>
+        <h3>Chapter 7: Events</h3>
+        <h4>Event Listeners</h4>
+        <p>
+            Event listeners in JavaScript work in much the same way. They are like setting a notification to alert you when something happens. Instead of the program having to constantly check to see if an event has occurred, the event listener will let it know when the event happens, and the program can then respond appropriately. This allows the program to continue with other tasks while it waits for the event to happen.<br><br>
+
+JavaScript, on the other hand, uses a non-blocking approach that uses event listeners to listen out for any clicks on the page. Every time the page is clicked, a callback function will be called. So the program can continue processing the rest of the code while it's waiting for the click event to happen.<br>
+The following code can be used to attach an event listener to the document that fires when the user clicks anywhere on the page:<br><br>
+
+document.body.addEventListener("click", doSomething);<br><br>
+
+Event listeners are added to elements on the page and are part of the DOM that we met in the last chapter. In the example above, the event listener has been added to the document’s body element. It will call the function doSomething() when any part of the page is clicked on. Until that happens, the program will continue to run the rest of the code.<br>
+        </p>
     </div>
 </body>
 </html>
