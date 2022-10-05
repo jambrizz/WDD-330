@@ -1,0 +1,41 @@
+#table-tic{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+#cell1{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell2{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell3{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell4{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell5{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell6{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell7{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell8{
+    border:solid 1px black;
+    padding:20px;
+}
+#cell9{
+    border:solid 1px black;
+    padding:20px;
+}

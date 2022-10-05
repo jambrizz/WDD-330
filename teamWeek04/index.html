@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>WDD-330 Team Week 04</title>
+        <link type="text/css" rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main>
+            <div id="titles">
+                <h1>Tic Tac Toe</h1>
+                <h2>Player 1 = X</h2>
+                <h2>Player 2 = O</h2>
+                <input type="button" value="Reset" id="reset">
+            </div>
+            <div class="div-winner">
+                <label id="lbl-winner"></label>
+            </div>
+            <div id="table-tic">
+                <div id="cell1"></div>
+                <div id="cell2"></div>
+                <div id="cell3"></div>
+                <div id="cell4"></div>
+                <div id="cell5"></div>
+                <div id="cell6"></div>
+                <div id="cell7"></div>
+                <div id="cell8"></div>
+                <div id="cell9"></div>
+            </div>
+        </main>
+        <script>
+            let tableTic = document.getElementById('table-tic');
+            let btnReset = document.getElementById('reset');
+            let option = "";
+            count = 0;
+            createTable(3,3);
+
+            function createTable(col, row){
+                let table = document.createElement('table');
+                table.setAttribute('id', 'main-table');
+                for(i = 0; i < col; i++){
+                    let tRow = document.createElement('tr');
+                    for(j = 0; j < row; j++){
+                        let tCol = document.createElement('td');
+                        tCol.setAttribute('class', `td${i}-${j}`);
+                        tCol.setAttribute('id', `td${i}-${j}`);
+                        tRow.appendChild(tCol);
+                    }
+                    table.appendChild(tRow);
+                }
+                tableTic.appendChild(table);
+            }
+
+            const winningConditions = [
+             [  [0, 1, 2],
+	            [3, 4, 5],
+	            [6, 7, 8],
+	            [0, 3, 6],
+	            [1, 4, 7],
+	            [2, 5, 8],
+	            [0, 4, 8],
+	            [2, 4, 6]],
+            ]
+
+            function checkForWin(){
+                const cell1 = document.getElementById('cell1');
+                const cell2 = document.getElementById('cell2');
+                const cell3 = document.getElementById('cell3');
+                const cell4 = document.getElementById('cell4');
+                const cell5 = document.getElementById('cell5');
+                const cell6 = document.getElementById('cell6');
+                const cell7 = document.getElementById('cell7');
+                const cell8 = document.getElementById('cell8');
+                const cell9 = document.getElementById('cell9');
+                if(cell1.textContent == "X" && cell2.textContent == "X" && cell3.textContent == "X"){
+                    console.log('x won');
+                } else if(cell4.textContent == "X" && cell5.textContent == "X" && cell6.textContent == "X"){
+                    console.log('x won');
+                } else if(cell7.textContent == "X" && cell8.textContent == "X" && cell9.textContent == "X"){
+                    console.log('x won');
+                } else if(cell1.textContent == "X" && cell4.textContent == "X" && cell7.textContent == "X"){
+                    console.log('x won');
+                } else if(cell2.textContent == "X" && cell5.textContent == "X" && cell8.textContent == "X"){
+                    console.log('x won');
+                } else if(cell3.textContent == "X" && cell6.textContent == "X" && cell9.textContent == "X"){
+                    console.log('x won');
+                } else if(cell1.textContent == "X" && cell5.textContent == "X" && cell9.textContent == "X"){
+                    console.log('x won');
+                } else if(cell3.textContent == "X" && cell5.textContent == "X" && cell7.textContent == "X"){
+                    console.log('x won');
+                } else if(cell1.textContent == "O" && cell2.textContent == "O" && cell3.textContent == "O"){
+                    console.log('o won');
+                } else if(cell4.textContent == "O" && cell5.textContent == "O" && cell6.textContent == "O"){
+                    console.log('o won');
+                } else if(cell7.textContent == "O" && cell8.textContent == "O" && cell9.textContent == "O"){
+                    console.log('o won');
+                } else if(cell1.textContent == "O" && cell4.textContent == "O" && cell7.textContent == "O"){
+                    console.log('o won');
+                } else if(cell2.textContent == "O" && cell5.textContent == "O" && cell8.textContent == "O"){
+                    console.log('o won');
+                } else if(cell3.textContent == "O" && cell6.textContent == "O" && cell9.textContent == "O"){
+                    console.log('o won');
+                } else if(cell1.textContent == "O" && cell5.textContent == "O" && cell9.textContent == "O"){
+                    console.log('o won');
+                } else if(cell3.textContent == "O" && cell5.textContent == "O" && cell7.textContent == "O"){
+                    console.log('o won');
+                }
+            }
+
+            gameTurn = {turn: 0};
+
+            function match(event){
+                const cell =  event.target.id;
+                const element = document.getElementById(cell);
+                let turn = gameTurn.turn;
+                if(turn == 0){
+                    element.textContent = "X";
+                } else{
+                    element.textContent = "O";
+                }
+                gameTurn.turn = !gameTurn.turn;
+                checkForWin();
+            }
+
+            tableTic.addEventListener('click', match);
+            btnReset.addEventListener('click', reset);
+            
+            function reset(){
+                const cell1 = document.getElementById('cell1');
+                const cell2 = document.getElementById('cell2');
+                const cell3 = document.getElementById('cell3');
+                const cell4 = document.getElementById('cell4');
+                const cell5 = document.getElementById('cell5');
+                const cell6 = document.getElementById('cell6');
+                const cell7 = document.getElementById('cell7');
+                const cell8 = document.getElementById('cell8');
+                const cell9 = document.getElementById('cell9');
+                cell1.textContent = "";
+                cell2.textContent = "";
+                cell3.textContent = "";
+                cell4.textContent = "";
+                cell5.textContent = "";
+                cell6.textContent = "";
+                cell7.textContent = "";
+                cell8.textContent = "";
+                cell9.textContent = "";
+            }
+        </script>
+    </body>
+</html>
