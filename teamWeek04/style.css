@@ -1,41 +1,90 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
 #table-tic{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    width: 50%;
+    height: 50%;
+
 }
 #cell1{
-    border:solid 1px black;
-    padding:20px;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell2{
-    border:solid 1px black;
-    padding:20px;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell3{
-    border:solid 1px black;
-    padding:20px;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell4{
-    border:solid 1px black;
-    padding:20px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell5{
-    border:solid 1px black;
-    padding:20px;
+    border:solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell6{
-    border:solid 1px black;
-    padding:20px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell7{
-    border:solid 1px black;
-    padding:20px;
+    border-top-style: solid;
+    border-right-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell8{
-    border:solid 1px black;
-    padding:20px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
 }
 #cell9{
-    border:solid 1px black;
-    padding:20px;
+    border-top-style: solid;
+    border-left-style: solid;
+    padding:30px;
+    text-align: center;
+    font-size: 2rem;
+}
+#lbl-winner{
+    font-size: 3rem;
+}
+#reset{
+    font-size: 1rem;
+    padding: 7px 10px;
+    border-radius: 5px;
 }

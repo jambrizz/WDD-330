@@ -73,37 +73,37 @@
                 const cell8 = document.getElementById('cell8');
                 const cell9 = document.getElementById('cell9');
                 if(cell1.textContent == "X" && cell2.textContent == "X" && cell3.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell4.textContent == "X" && cell5.textContent == "X" && cell6.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell7.textContent == "X" && cell8.textContent == "X" && cell9.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell1.textContent == "X" && cell4.textContent == "X" && cell7.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell2.textContent == "X" && cell5.textContent == "X" && cell8.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell3.textContent == "X" && cell6.textContent == "X" && cell9.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell1.textContent == "X" && cell5.textContent == "X" && cell9.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell3.textContent == "X" && cell5.textContent == "X" && cell7.textContent == "X"){
-                    console.log('x won');
+                    document.getElementById('lbl-winner').textContent = "Player 1 Wins!";
                 } else if(cell1.textContent == "O" && cell2.textContent == "O" && cell3.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 } else if(cell4.textContent == "O" && cell5.textContent == "O" && cell6.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 } else if(cell7.textContent == "O" && cell8.textContent == "O" && cell9.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 } else if(cell1.textContent == "O" && cell4.textContent == "O" && cell7.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 } else if(cell2.textContent == "O" && cell5.textContent == "O" && cell8.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 } else if(cell3.textContent == "O" && cell6.textContent == "O" && cell9.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 } else if(cell1.textContent == "O" && cell5.textContent == "O" && cell9.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 } else if(cell3.textContent == "O" && cell5.textContent == "O" && cell7.textContent == "O"){
-                    console.log('o won');
+                    document.getElementById('lbl-winner').textContent = "Player 2 Wins!";
                 }
             }
 
@@ -135,6 +135,7 @@
                 const cell7 = document.getElementById('cell7');
                 const cell8 = document.getElementById('cell8');
                 const cell9 = document.getElementById('cell9');
+                const lblWinner = document.getElementById('lbl-winner');
                 cell1.textContent = "";
                 cell2.textContent = "";
                 cell3.textContent = "";
@@ -144,6 +145,7 @@
                 cell7.textContent = "";
                 cell8.textContent = "";
                 cell9.textContent = "";
+                lblWinner.textContent = "";
             }
         </script>
     </body>

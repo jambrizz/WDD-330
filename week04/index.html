@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>WDD-330 Week01</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="/main.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Reading Notes</h1>
+        </div>
+        <div>
+            <h2>Chapter 8: Forms</h2>
+            <h4>Accesing Form Elements</h4>
+            <p>The legacy DOM had a useful property called <strong>document.forms</strong> that returns an HTML collection of all the forms in the document in the order they appear in the markup. Even though there is only one form in our example, a collection will still be returned, so we have to use index notation to return the first (and only) form object, like so:</p><br>
+            <p>const form = document.forms[0];<br><br>
+            Or<br><br>
+            const form = document.getElementsByTagname('form')[0];<br><br>
+            Or<br><br>
+            const form = document.forms.search;
+            </p><br>
+            <p>
+                Be careful referencing elements in this way, however. If the form had the same name as any properties or methods of the <strong>document.forms</strong> object, such as 'submit', for example, that property or method would be referenced instead of the <strong>form</strong> element. This is unlikely to happen, as the <strong>document.form</strong> object doesn't have many properties or methods, but it is something to be aware of. To avoid this, square bracket notation can be used (this is also required if the form’s name attribute contains any invalid characters, such as spaces or dashes): 
+            </p>
+            <h4>Form Properties and Methods</h4>
+            <p>
+                The <strong>form.submit()</strong> method will submit the form automatically. Note that submitting a form using this method won’t trigger the form <strong>submit</strong> event that's covered in the next section.
+                <br><br>
+                A form can be submitted manually by the user employing a button or input element with a type attribute of <strong>submit</strong>, or even an input element with a <strong>type</strong> attribute of <strong>image</strong>:
+            </p><br>
+            <p>
+                button type='submit'>Submit /button<br>
+                input type='submit' value='Submit'<br>
+                input type='image' src='button.png'<br>
+            </p>
+            <h5>Reset Buttons</h5>
+            <p>
+                Reset buttons are generally considered poor for usability, as they are too easy to click and then wipe out all the data that's been entered. So think very carefully before using one in a form. (This don't seem natural to me but it makes sense and if it is industry standard then I will follow it.)
+            </p>
+            <h2>Chapter 12: Object Oriented Programming</h2>
+            <h4>Object Oriented Programing</h4>
+            <P>
+                Object-oriented programming is often used to model representations of objects in the real world. There are three main concepts in OOP: encapsulation, polymorphism and inheritance.
+            </P><br>
+            <h4>Encapsulation</h4>
+            <p>
+                The inner workings are kept hidden inside the object and only the essential functionalities are exposed to the end user, such as the 'on' button. In OOP, this involves keeping all the programming logic inside an object and making methods available to implement the functionality, without the outside world needing to know how it’s done.
+            </p>
+            <h4>Polymorphism</h4>
+            <p>
+                In OOP, this means various objects can share the same method, but also have the ability to override shared methods with a more specific implementation.
+            </p>
+            <h4>inheritance</h4>
+            <p>
+                concept of inheritance: taking the features of one object then adding some new features. In OOP, this means we can take an object that already exists and inherit all its properties and methods. We can then improve on its functionality by adding new properties and methods.
+            </p>
+            <h2>Chapter 15: Modern JavaScript Development</h2>
+            <h4>Libraries</h4>
+            <p>
+                A JavaScript library is a piece of code that provides several methods that make it easier to achieve common tasks. JavaScript is an extremely flexible language that can accomplish most programming tasks - but not all undertakings are as easy to do as they should be. A library will abstract functionality into easier-to-use functions and methods. These can then be used to complete common tasks without having to use lots of repetitive code.
+            </p>
+            <h4>jQuery</h4>
+            <p>
+                jQuery is the most popular of all the JavaScript libraries used today.  It is used in a huge number of commercial websites and has a plugin system that makes it easy to extend and use to build common web page elements, such as a lightbox or carousel widget. A big advantage of using jQuery is its support for older browsers, particularly Internet Explorer. If you find yourself having to support these browsers then jQuery could save you a huge amount of time and headache.
+            </p>
+            <h4>When to use a library</h4>
+            <p>
+                Many libraries have become monolithic, with a plethora of methods that try to do everything. An example of this is jQuery. While it contains a large number of useful methods, it also provides many features that are often unnecessary. jQuery's modular structure means that you can include only the parts you need on a module-by-module basis. But if you find that you're not using many of the methods a library offers, you should consider using a lighter alternative that only focuses on solving one problem (some suggestions are given below). And if you're only using a handful of methods, maybe avoid using a library altogether and try using plain old JavaScript. You could even package together useful functions you've created in a module that serves as your own personal library.
+            </p>
+            <h4>Modular JavaScript</h4>
+            <p>
+                A module is a self-contained piece of code that provides functions and methods that can then be used in other files and by other modules. This helps to keep code organized in separate, reusable files, which improves code maintainability. The code in a module should have a single purpose, and group together functions with distinct functionality. For example, you might keep any functions used for Ajax in their own module. This could then be used in any projects where Ajax was required. Keeping code modular helps to make it more loosely coupled and interchangeable, meaning you can easily swap one module for another without affecting other parts of a project. Indeed, small single-purpose modules are the exact opposite of large monolithic libraries as they enable developers to use only the modules that are needed, avoiding any wasted code. Modules also allow a public API to be exposed, while keeping the implementation hidden away inside the module.
+            </p>
+            <h4>Node.js Modules</h4>
+            <p>
+                Node.js had already implemented modules before they were introduced in ES6, and used a slightly different notation called Common JS modules. At the time of writing it is proving difficult to merge the two notations in an elegant way, although it is expected that Node.js will support ES6 modules in some way in the future. Despite this, I expect you will continue to see the Common JS module pattern used by Node.js tutorials for a long time to come.
+                <br><br>
+                A Common JS module is created in a separate file, and the module.exports method is used to make any functions available to other files, in a similar way to ES6 modules.
+            </p>
+            <h2>MVC Frameworks</h2>
+            <p>
+                Model-View-Controller (MVC) is a design pattern that's been used for a long time in server-side languages. It's a common way of designing software, and used by server-side frameworks such as Ruby On Rails and Django. In recent years it has been used in JavaScript code to make it easier to organize large-scale web applications.
+            </p>
+            <h4>Models</h4>
+            <p>
+                Models are objects that implement the functionality for creating, reading, updating and deleting (known as CRUD tasks) specific pieces of information about the application, as well as any other associated logic and behavior. In a to-do list application, for example, there would be a task model providing methods to access all the information about the tasks such as names, due dates and completed tasks. This data will often be stored in a database or some other container.
+            </p>
+            <h4>Views</h4>
+            <p>
+                Views provide a visual representation of the model showing all the relevant information. In a web application, this would be the HTML displayed on a web page. Views also provide a way for users to interact with an application, usually via forms. In a to-do list application, the views would display the tasks as an HTML list with checkboxes that a user could tick to say a task had been completed.
+            </p>
+            <h4>Controllers</h4>
+            <p>
+                Controllers link models and views together by communicating between them. They respond to events, which are usually inputs from a user (entering some data into a form, for example), process the information, then update the model and view accordingly. In a to-do list application, the controller functions would respond to the event of a user clicking on a check box and then inform the model that a task had been completed. The model would then update the information about that task.
+            </p>
+            <h4>Package Managers</h4>
+            <P>
+                As modules have become more widely used in JavaScript, there’s been a need for tools to manage them. Package managers allow developers to download modules from a central repository. A package is just a directory with one or more files of code, as well as a package.json file that contains information about the code in the package. Developers can also share any modules they create by uploading them to the central repository for others to use. A package manager makes it easy to install, upgrade and remove any packages that are used in a project. They also allow you to manage different versions of packages.
+                <br><br>
+                When you start to use more modules, you’ll find that some of them depend on other modules to work. These are known as dependencies. Dependency management is the process of ensuring that all the dependencies a module requires are met. This can be difficult to do manually once a project becomes large, so package managers can also help with dependency management.
+            </P>
+        </div>
+    </body>
+</html>
