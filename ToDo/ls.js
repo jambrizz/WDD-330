@@ -1,21 +1,31 @@
 //Model
-//This file is to store the list of tasks in an array
-
-//The todo:{id: timestamp, content: string, completed: boolean} object
-//array to store the list of tasks
-/*
-class tasksModel {
-
-    getAllTasks() {
-        const allTasks = [];
-        for (let i = 0; i <= localStorage; i++) {
-            let key = localStorage.key(i);
-            let value = localStorage.getItem(key);
-            console.log(key, value);
-        };
-    };
-
+function createNewTask(){
+    task = document.getElementById('task').value;
+    //const taskList = toDoList;
+    const newTask = {
+        id: Date.now(),
+        content: task,
+        completed: false
+    }; 
+    localStorage.setItem(newTask.id, JSON.stringify(newTask));
+    pendingTasks();
 };
 
-export default {tasksModel}; 
-*/
+function deleteTask(id) {
+    localStorage.removeItem(id);
+    pendingTasks();
+};
+
+function taskCompleted(id) {
+    let task = localStorage.getItem(id);
+    task = JSON.parse(task);
+    const updateTask = {
+        id: task.id,
+        content: task.content,
+        completed: !task.completed
+    };
+    localStorage.setItem(updateTask.id, JSON.stringify(updateTask));
+    pendingTasks();
+};
+
+export {createNewTask, deleteTask, taskCompleted};

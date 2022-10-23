@@ -6,22 +6,32 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div id="title-div">
-        <h1 id="title-header">ToDos</h1>
-    </div>
-    <div id="tasks-control">
-        <div id="display-tasks">
-
+    <main>
+        <div id="title-div">
+            <h1 id="title-header">ToDos</h1>
         </div>
-    </div>
-    <footer>
-        <div id="task-input">
-            <form id="task-form">
-                <input type="text" id="task" placeholder="Enter a task" required>
-                <button type="button" id="addTodo">+</button>
-            </form>
+        <div id="tasks-control">
+            <div id="display-tasks">
+    
+            </div>
+            <div id="controls">
+                <div id="count"></div>
+                <div id="buttons-div">
+                    <div id="all"></div>
+                    <div id="pending"></div>
+                    <div id="completed"></div>
+                    </div>
+            </div>
         </div>
-    </footer>
+        <footer>
+            <div id="task-input">
+                <form id="task-form">
+                    <input type="text" id="task" placeholder="Enter a task" required>
+                    <button type="button" id="addTodo">+</button>
+                </form>
+            </div>
+        </footer>
+    </main>
 </body>
 <script type="module" src="./ToDo.js"></script>
 </html>

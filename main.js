@@ -23,7 +23,20 @@ const links = [
     {
         label: "Week 4 team activity",
         url: "teamWeek04/index.html"
+    },
+    {
+        label: "Week 5 Notes",
+        url: "week05/index.html"
+    },
+    {
+        label: "Week 5 team activity",
+        url: "teamWeek05/index.html"
+    },
+    {
+        label: "Midterm: Todo App",
+        url: "toDo/index.html"
     }
+
 ]
 
 //loop through the array above and create a list item for each link
