@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>WDD-330 Week07</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="/main.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Reading Notes</h1>
+        </div>
+        <div id="chapt11">
+            <h2>Chapter 11: Further Functions</h2>
+            <h3>Call and Apply Methods</h3>
+            <p>The call() method can be used to set the value of this inside a function to an object that is provided as the first argument.
+                <br><br>
+                We can create some objects that have a name property, then use the call() method to invoke the sayHello() function, providing each object as an argument. This will then take the value of this in the function:
+                <br><br>
+                const clark = { name: 'Clark' };
+                const bruce = { name: 'Bruce' };
+                <br><br>
+                sayHello.call(clark);
+                << 'Hello, my name is Clarke'
+                <br><br>
+                sayHello.call(bruce);
+                << 'Hello, my name is Bruce'
+                <br><br>
+                The apply() method works in the same way, except the arguments of the function are provided as an array, even if there is only one argument:
+                <br><br>
+                square.apply(null, [4])
+                << 16
+                <br><br>
+                </p>
+                <h3>Memoization</h3>
+                <p>If a function takes some time to compute a return value, we can save the result in a cache property. Then if the same argument is used again later, we can return the value from the cache, rather than having to compute the result again. For example, say squaring a number was an expensive computational operation that took a long time. We could rewrite the square() function so it saved each result in a cache object that is a property of the function:
+                    <br><br>
+                    function square(x){
+                        square.cache = square.cache || {};
+                        if (!square.cache[x]) {
+                            square.cache[x] = x*x;
+                        }
+                        return square.cache[x]
+                    }
+                    <br><br>
+                    If we try calling the function a few times, we can see that the cache object stores the results:
+                    <br><br>
+                    square(3);
+                    << 9
+                    <br><br>
+                    square(-11);
+                    << 121
+                    <br><br>
+                    square.cache;
+                    << {"3": 9, "-11": 121}
+                    <br><br>
+                    Immediately Invoked Function Expression – or IIFE – (pronounced 'iffy') is an anonymous function that, as the name suggests, is invoked as soon as it’s defined. This is easily achieved by placing parentheses at the end of the function definition 
+                    <br><br>
+                    (function(){
+                    const temp = 'World';
+                    console.log(`Hello ${temp}`);
+                    })();
+                    << 'Hello World'
+                    <br><br>
+                    IIFEs are a useful way of performing a task while keeping any variables wrapped up within the scope of the function. This means the global namespace is not polluted with lots of variable names.
+                </p>
+                <h3>Creating Self-contained Code Blocks</h3>
+                <p>An IIFE can be used to enclose a block of code inside its own private scope so it doesn’t interfere with any other part of the program. Using IIFEs in this way means code can be added or removed separately. 
+                    <br><br>
+                    (function() {
+                        // block A
+                        const name = 'Block A';
+                        console.log(`Hello from ${name}`);
+                        }());
+                        <br><br>
+                        (function() {
+                        // block B
+                        const name = 'Block B';
+                        console.log(`Hello from ${name}`);
+                    }());
+                    <br><br>
+                    <<  Hello from Block A
+                        Hello from Block B
+                        <br><br>
+                    Notice that both code blocks include a variable called name, but the modules don’t interfere with each other. This is a useful approach for separating parts of a program into discrete sections, especially for testing purposes.
+                    </p>
+                    <h3>Event-driven Asynchronous Programming</h3>
+                    <p>Callbacks can be used to facilitate event-driven asynchronous programming. JavaScript is a single-threaded environment, which means only one piece of code will ever be processed at a time. This may seem like a limitation, but non-blocking techniques can be used to ensure that the program continues to run. Instead of waiting for an event to occur, a callback can be created that’s invoked when the event happens. This means that the code is able to run out of order, or asynchronously. Events can be DOM events, such as the click and keyPress that we looked at in Chapter 7, but they can also be events such as the completion of a file download, data returned from a database, or the result of a complex operation. By using callbacks, we ensure that waiting for these tasks to complete doesn't hold up the execution of other parts of the program. Once the task has been completed, the callback will be invoked before returning to the rest of the program.<br><br>
+                    </p>
+                    <h3>Callback Hell</h3>
+                    <p>The increase in the use of asynchronous programming in JavaScript has meant that more and more callbacks are being used. This can result in messy and confusing 'spaghetti code'. This is when more than one callback is used in the same function, resulting in a large number of nested blocks that are difficult to comprehend.
+                        Callback hell is the term used to refer to this tangled mess of code, and it's such a common issue that it even has its own website!
+                    <br><br>    
+                    </p>
+                    <h3>Promises</h3>
+                    <p>A promise represents the future result of an asynchronous operation. Promises don't do anything that can't already be achieved using callbacks, but they help simplify the process, and avoid the convoluted code that can result from using multiple callbacks.<br><br>
+                    </p>
+                    <h3>Async Functions</h3>
+                    <p>Async functions were added to the ES2017 specification. These functions are preceded by the async keyword and allow you to write asynchronous code as if it was synchronous. This is achieved by using the await operator before an asynchronous function. This will wrap the return value of the function in a promise that can then be assigned to a variable. The next line of code is not executed until the promise is resolved.
+                        <br><br>
+                        async function loadGame(userName) {
+                        <br><br>
+                            try {
+                                const user = await login(userName);
+                                const info = await getPlayerInfo (user.id);
+                                // load the game using the returned info
+                            }
+                        <br><br>
+                            catch (error) {
+                                // handle any errors
+                            }
+                            catch (error){
+                                throw error;
+                            }
+                        }
+                        <br><br>
+                        In the example, the loadGame function is preceded by the async keyword, meaning the function will run in an asynchronous fashion. We then wrap each step of the process in a try block, so any errors are caught. Inside this block, we can write each step in the order it’s meant to be processed, so we start by assigning the variable user to the return value of the login() function. The await operator will ensure the next line of code is not executed until the login() function returns a user object. The getPlayerInfo() function is also preceded by the await operator. Once this function returns a result, it’s assigned to the variable info, and this can then be used to load the actual game. A catch block is used to deal with any errors that may occur.<br><br>
+                    </p>
+        </div>
+        <div id="chapt13">
+            <h2>Chapter 13: AJAX</h2>
+            <h3>AJAX</h3>
+            <p>Ajax is a technique that allows web pages to communicate asynchronously with a server, and it dynamically updates web pages without reloading. This enables data to be sent and received in the background, as well as portions of a page to be updated in response to user events, while the rest of the program continues to run.<br><br>
+            </p>
+            <h3>The Fetch API</h3>
+            <p>The XMLHttpRequest object was finally standardized by the WHATWG and W3C as part of the HTML5 specification, despite it originally being implemented by Microsoft many years earlier, and already available in most browsers.
+                It has since been superseded by the Fetch API, which is currently a living standard for requesting and sending data asynchronously across a network. The Fetch API uses promises to avoid callback hell, and also streamlines a number of concepts that had become cumbersome when using the XMLHttpRequest object.
+            <br><br>
+            </p>
+            <h3>Response Interface</h3>
+            <p>The Fetch API introduced the Response interface that deals with the object that’s returned when the promise is fulfilled. Response objects have a number of properties and methods that allow us to process the response effectively.
+                <br><br>
+                For example, each response object has an ok property that checks to see if the response is successful. This is based on the HTTP status code, which can be accessed using the status property. This will usually be 200 if the response was successful, 201 if a resource was created, or 204 when the request is successful but no content is returned. The ok property will return true if the status property is between 200 and 299. We need to manually check if this happens because the promise will only be rejected in the case of a network error, rather than something like a '404 page not found error', which is still considered a successful request in terms of the promise.
+                <br><br>
+                Some other properties of the Response object are:
+                    • <strong>headers</strong> – A Headers object (see later section) containing any headers associated with the response
+                    • <strong>url</strong> – A string containing the URL of response
+                    • <strong>redirected</strong> – A boolean value that specifies if the response is the result of a redirect
+                    • <strong>type</strong> – A string value of 'basic', 'cors', 'error' or 'opaque'. A value of 'basic' is used for a response from the same domain. A value of 'cors' means the data was received from a valid cross-origin request from a different domain. A value of 'opaque' is used for a response received from 'no-cors' request from another domain, which means access to the data will be severely restricted. A value of 'error' is used when a network error occurs.
+                </p>
+                <h4>Redirects</h4>
+                <p>The redirect() method can be used to redirect to another URL. It creates a new promise that resolves to the response from the redirected URL.
+                    <br><br>
+                    fetch(url)
+                    .then( response => response.redirect(newURL)); // redirects to another URL
+                    .then( // do something else )
+                    .catch( error => console.log('There was an error: ', error))
+                    <br><br>
+                </p>
+                <h4>JSON Responses</h4>
+                <p>JSON is probably the most common format for AJAX responses. The json() method is used to deal with these by transforming a stream of JSON data into a promise that resolves to a JavaScript object.
+                    <br><br>
+                    fetch(url)
+                    .then( response => response.json() ); // transforms the JSON data into a JavaScript object
+                    .then( data => console.log(Object.entries(data)) )
+                    .catch( error => console.log('There was an error: ', error))<br><br>
+                </p>
+                <h4>Creating Response Objects</h4>
+                <p>Although most of the time you will be dealing with a response object that is returned from a request you make, you can also create your own response objects using a constructor function:
+                    <br><br>
+                    const response = new Response( 'Hello!', {
+                        ok: true,
+                        status: 200,
+                        statusText: 'OK',
+                        type: 'cors',
+                        url: '/api'
+                    });
+                    <br><br>
+                    The first argument is the data that is to be returned (for example a text stream, file or JSON data). The second argument is an object that can be used to provide values for any of the properties listed above.<br>
+                    These can be useful to use if you are creating an API that needs to send a response, or if you need to send a dummy response for testing purposes.<br><br>
+                </p>
+                <h3>Request Interface</h3>
+                <p>We can get more fine-grained control over the request being made by providing a Request object as an argument. This allows a number of options to be set about the request.<br>
+                    Request objects are created using the Request() constructor, and include the following properties:
+                        • url – The URL of the requested resource (the only property that is required).
+                        • method – a string that specifies which HTTP method should be used for the request. By default, this is 'GET'.
+                        • headers – This is a Headers object (see later section) that provides details of the request's headers.
+                        • mode – Allows you to specify if CORS is used or not. CORS is enabled by default.
+                        • cache – Allows you to specify how the request will use the browser's cache. For example, you can force it to request a resource and update the cache with the result, or you can force it to only look in the cache for the resource.
+                        • credentials – Lets you specify if cookies should be allowed with the request.
+                        • redirect – Specifies what to do if the response returns a redirect. There’s a choice of three values: 'follow' (the redirect is followed), 'error' (an error is thrown) or 'manual' (the user has to click on a link to follow the redirect).
+                    <br><br>
+                    const request = new Request('https://example.com/data', {
+                        method: 'GET',
+                        mode: 'cors',
+                        redirect: 'follow',
+                        cache: 'no-cache'
+                    });<br><br>
+                    <strong>
+                    Is it necessary to create your own request interface? Is that industry standard?</strong>
+                </p>
+                <h3>Headers Interface</h3>
+                <p>HTTP headers are used to pass on any additional information about a request or response. Typical information contained in headers includes the file-type of the resource, cookie information, authentication information and when the resource was last modified.
+                    The Fetch API introduced a Headers interface, which can be used to create a Headers object, which can then be added as a property of Request and Response objects.
+                    <br><br>
+                    const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })
+                    </p>
+        </div>
+    </body>
+</html>
