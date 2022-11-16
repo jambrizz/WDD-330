@@ -35,6 +35,14 @@ const links = [
     {
         label: "Midterm: Todo App",
         url: "ToDo/index.html"
+    },
+    {
+        label: "Week 7 Notes",
+        url: "week07/index.html"
+    },
+    {
+        label: "Week 7 team activity",
+        url: "teamWeek07/index.html"
     }
 
 ]
