@@ -1,3 +1,4 @@
+/*
 // Quake View handler
 export default class QuakesView {
     renderQuakeList(quakeList, listElement) {
@@ -17,3 +18,4 @@ export default class QuakesView {
       // for the provided quake make a list of each of the properties associated with it. Then append the list to the provided element. Notice the first line of this method. Object.entries() is a slick way to turn an object into an array so that we can iterate over it easier! 
     }
   }
+  */
