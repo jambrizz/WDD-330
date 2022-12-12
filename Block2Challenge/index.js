@@ -80,7 +80,7 @@ let computerHits = 0;
 grid.addEventListener('click', hit);
 shipsGrid.addEventListener('click', playerPlacementOfShips);
 
-let shipsArray = [];
+const shipLocations = new Map();
 
 function playerPlacementOfShips(event) {
     const cell = event.target.id;
@@ -89,12 +89,12 @@ function playerPlacementOfShips(event) {
         if(cellValue == 'false') {
             //valueCell.setAttribute('value', 'true');
             //targetCell.setAttribute('value', 'true');
-            shipsArray.push(id, `${targetCell.id}`, value, true);
-            console.log(shipsArray);
+            shipLocations.set(`${targetCell.id}`, true);
+            console.log(shipLocations);
             ++playersBattleships;
             console.log(playersBattleships);
-            if(playersBattleships == 5) {
-                console.log(shipsArray);
+            if(shipLocations.size == 5) {
+                console.log('you have placed all your ships');
             }
         }
 };
