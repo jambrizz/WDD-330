@@ -34,14 +34,15 @@ function createPlayersBoard(col, row) {
         for(let j = 0; j < row; j++) {
             let tCol = document.createElement('td');
             tCol.setAttribute('class', 'cell');
-            tCol.setAttribute('id', `${count}`);
-            tCol.setAttribute('value', 'false');
+            tCol.setAttribute('id', `p${count}`);
+            tCol.setAttribute('value', false);
             count++;
             tRow.appendChild(tCol);
         }
         table.appendChild(tRow);
     }
     shipPlacement.appendChild(table);
+    generatePlayersShips();
 }; 
 
 /****************************************************************/
@@ -49,7 +50,6 @@ function createPlayersBoard(col, row) {
 //******************************  model ********************************* */
 function computerShipSelection(){
     const totalShips= 5;
-    //const number = Math.floor(Math.random() * 35);
     const shipLocations = [];
     for(let i = 0; i < totalShips;) {
         const number = Math.floor(Math.random() * 35);
@@ -58,17 +58,13 @@ function computerShipSelection(){
             i++;
         }
     };
-    console.log(shipLocations);
     generateShips(shipLocations, 'grid');
 }
 
 function generatePlayersShips() {
-    const playersShips = [];
-    Object.keys(localStorage.shipLocations).forEach(key => {
-        playersShips.push(localStorage.shipLocations[key]);
-    });
-    console.log(playersShips);
-    //generateShips(ships, 'shipsGrid');
+    const shipLocations = JSON.parse(localStorage.ships);
+    console.log(shipLocations);
+    shipsFromLS(shipLocations, 'shipsGrid');
 };
 
 function generateShips(array, a) {
@@ -78,60 +74,21 @@ function generateShips(array, a) {
     });
 };
 
-/*
-const totalShips = 5;
-function generateShips() {
-    //const location = Math.floor(Math.random() * 35);
-    //let i = 0;
-    const totalShips = 5;
-    for(let i = 0; i < totalShips;) {
-        const location = Math.floor(Math.random() * 35);
-        //console.log(location);
-        const cell = document.getElementById(`${location}`);
-        const value = cell.getAttribute('value');
-            if(value != true) {
-                cell.setAttribute('value', 'true');
-                i++;
-            }
-    };
+function shipsFromLS(array, a) {
+    array.forEach(element => {
+        const cell = document.getElementById(`p${element}`);
+        cell.setAttribute('value', 'true');
+    });
 };
-*/
-/****************************************************************/
 
 
 //******************************  controller ********************************* */
 let battleships = 5;
 let hits = 0;
 
-//let playersBattleships = 0;
 let computerHits = 0;
 
 grid.addEventListener('click', hit);
-
-/*
-shipsGrid.addEventListener('click', playerPlacementOfShips);
-
-const shipLocations = [];
-
-function playerPlacementOfShips(event) {
-    //const shipLocations = {};
-    const cell = event.target.id;
-    const cellValue = document.getElementById(cell).getAttribute('value');
-    const targetCell = document.getElementById(cell);
-        if(cellValue == 'false') {
-            //valueCell.setAttribute('value', 'true');
-            //targetCell.setAttribute('value', 'true');
-            shipLocations.push(`${targetCell.id}`);
-            console.log(shipLocations);
-            ++playersBattleships;
-            console.log(playersBattleships);
-            if(shipLocations.length == 5) {
-                console.log('you have placed all your ships');
-                localStorage.setItem('shipLocations', JSON.stringify(shipLocations));
-            }
-        }
-};
-*/
 
 function hit(event) {
     const cell = event.target.id;
@@ -145,11 +102,58 @@ function hit(event) {
             targetCell.textContent = 'X';
         };
     checkForWin();
+    targetGenerator();
 };
 
 function checkForWin() {
     if(hits == battleships) {
-        alert('you won');
+        alert('You won, click OK to play again.');
+        if(confirm) {
+            location.href = 'setships.html';
+        }
     }
 };
 
+let targets = new Map([["0", "p0"], ["1", "p1"], ["2", "p2"], ["3", "p3"], ["4", "p4"], ["5", "p5"], ["6", "p6"], ["7", "p7"], ["8", "p8"], ["9", "p9"], ["10", "p10"], ["11", "p11"], ["12", "p12"], ["13", "p13"], ["14", "p14"], ["15", "p15"], ["16", "p16"], ["17", "p17"], ["18", "p18"], ["19", "p19"], ["20", "p20"], ["21", "p21"], ["22", "p22"], ["23", "p23"], ["24", "p24"], ["25", "p25"], ["26", "p26"], ["27", "p27"], ["28", "p28"], ["29", "p29"], ["30", "p30"], ["31", "p31"], ["32", "p32"], ["33", "p33"], ["34", "p34"], ["35", "p35"]]);
+
+let pastTargets = new Map();
+
+function targetGenerator() {
+    const randomTarget = Math.floor(Math.random() * targets.size);
+    const target = targets.get(`${randomTarget}`);
+    const targetValue = document.getElementById(target).getAttribute('value');
+    //console.log(randomTarget);
+    //console.log(target);
+    //console.log(targetValue);
+    computerTargets(randomTarget, target, targetValue);
+};
+
+function computerTargets(a, b, c) {
+    const key = a;
+    const keyValue = b;
+    const targetValue = c;
+    if(!pastTargets.has(`${key}`)) {
+        pastTargets.set(`${key}`, `${keyValue}`);
+        //console.log(pastTargets);
+        if(targetValue == 'true') {
+            document.getElementById(keyValue).textContent = 'Hit';
+            document.getElementById(keyValue).style = "background-color: red;"
+            ++computerHits;
+            console.log(computerHits);
+            checkForComputerWin();
+        } else {
+            document.getElementById(keyValue).textContent = 'X';
+        }
+    } else{
+        targetGenerator();
+    };
+};
+
+function checkForComputerWin() {
+    if(computerHits == battleships) {
+        alert('You lost, click OK to play again.');
+        if(confirm) {
+            location.href = 'setships.html';
+        }
+    }
+}

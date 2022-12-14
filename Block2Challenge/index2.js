@@ -33,7 +33,7 @@ function playersBoards(col, row) {
 /************************Controller ************************************ */
 
 shipsGrid.addEventListener('click', playerPlacementOfShips);
-
+//!shipLocations.includes(`${targetCell.id}`
 let playersBattleships = 0;
 const shipLocations = [];
 
@@ -52,9 +52,10 @@ function playerPlacementOfShips(event) {
                 console.log(playersBattleships);
                 if(shipLocations.length == 5) {
                     //console.log('you have placed all your ships');
-                    localStorage.setItem('shipLocations', JSON.stringify(shipLocations));
+                    localStorage.setItem('ships', JSON.stringify(shipLocations));
                     alert('you have placed all your ships, click ok to start the game');
                     startGame();
+                    console.log(localStorage.getItem('shipLocations'));
                 }
             }
         } else{
