@@ -122,9 +122,6 @@ function targetGenerator() {
     const randomTarget = Math.floor(Math.random() * targets.size);
     const target = targets.get(`${randomTarget}`);
     const targetValue = document.getElementById(target).getAttribute('value');
-    //console.log(randomTarget);
-    //console.log(target);
-    //console.log(targetValue);
     computerTargets(randomTarget, target, targetValue);
 };
 
@@ -134,12 +131,10 @@ function computerTargets(a, b, c) {
     const targetValue = c;
     if(!pastTargets.has(`${key}`)) {
         pastTargets.set(`${key}`, `${keyValue}`);
-        //console.log(pastTargets);
         if(targetValue == 'true') {
             document.getElementById(keyValue).textContent = 'Hit';
             document.getElementById(keyValue).style = "background-color: red;"
             ++computerHits;
-            console.log(computerHits);
             checkForComputerWin();
         } else {
             document.getElementById(keyValue).textContent = 'X';

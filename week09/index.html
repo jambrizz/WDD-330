@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>WDD-330 Week08</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="/main.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>Reading Notes Week 8</h1>
+        </div>
+        <div id="Week9">
+            <h3>I started taking notes but I did not complete them. Below is what I have.</h3>
+            <p>
+                The Browser Object Model<br><br>
+
+The Browser Object Model (or BOM for short) is a collection of properties and methods that contain information about the browser and computer screen. For example, we can find out which browser is being used to view a page (though, this method is unreliable). We can also find out the dimensions of the screen it is viewed on, and which pages have been visited before the current page. It can also be used for the rather dubious practice of creating pop-up windows, if you’re into annoying your users.
+<br><br>
+Going Global
+All the way back in Chapter 2, we introduced the concept of global variables. These are variables that are created without using the const, let or var keywords. Global variables can be accessed in all parts of the program.
+Global variables are actual properties of a global object. In a browser environment, the global object is the window object.
+<br><br>
+x = 6;  // global variable created
+<< 6
+<br><br>
+window.x // same variable can be accessed as a property of the window object
+<< 6
+<br><br>
+// both variables are exactly the same
+window.x === x;
+<< true
+<br><br>
+In general, you should refer to global variables without using the window object; it’s less typing and your code will be more portable between environments.
+<br><br>
+Dialogs
+In Chapter 1, we introduced three functions that produced dialogs in the browsers: alert(), confirm() and prompt(). These are not part of the ECMAScript standard, although all major browsers support them as methods of the window object.
+<br><br>
+The window.alert() method will pause the execution of the program and display a message in a dialog box.
+<br><br>
+window.alert('Hello');
+<< undefined
+<br><br>
+The window.confirm() method will stop the execution of the program and display a confirmation dialog that shows the message provided as an argument, and giving the options of OK or Cancel. It returns the boolean values of true if the user clicks OK, and false if the user clicks Cancel:
+<br><br>
+window.confirm('Do you wish to continue?');
+<< undefined
+<br><br>
+The window.prompt() method will stop the execution of the program. It displays a dialog that shows a message provided as an argument, as well as an input field that allows the user to enter text. This text is then returned as a string when the user clicks OK. If the user clicks Cancel, null is returned:
+<br><br>
+window.prompt('Please enter your name:');
+<br><br>
+Location, Location, Location
+The window.location property is an object that contains information about the URL of the current page. It contains a number of properties that provide information about different fragments of the URL.
+<br><br>
+The Browser History
+The window.history property can be used to access information about any previously visited pages in the current browser session. Avoid confusing this with the new HTML5 History API.
+<br><br>
+Cookie Expiry Dates
+Cookies are session cookies by default. This means they are deleted once a browser session is finished (when the user closes the browser tab or window). Cookies can be made persistent ― that is, lasting beyond the browser session ― by adding "; expires=date" to the end of the cookie when it’s set, where date is a date value in the UTC String format Day, DD-Mon-YYYY HH:MM:SS GMT. The following example sets a cookie to expire in one day’s time:
+<br><br>
+const expiryDate = new Date(); 
+const tomorrow = expiryDate.getTime() + 1000 * 60 * 60 * 24;
+expiryDate.setTime(tomorrow);
+<br><br>
+document.cookie = `name=Batman; expires=${ expiryDate.toUTCString()}`;
+
+            </p>
+        </div>
+    </body>
+</html>

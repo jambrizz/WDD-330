@@ -11,9 +11,17 @@
         <div id="title-div">
            <h1 class="title">Battleship</h1>           
         </div>
-        <div id="board"></div>
-        <div id="players-ships"></div>
-        <button id="button"><a href="./index.html">Gameplay Selection</a></button>
+        <div id="gameboard-container">
+            <div class="dual-boards">
+                <h3 class="title">Computer's ships</h3>
+                <div id="board"></div>
+            </div>
+            <div class="dual-boards">
+                <h3 class="title">Your ships</h3>
+                <div id="players-ships"></div>
+            </div>
+        </div>
+        <button class="button"><a href="./index.html">Gameplay Selection</a></button>
     </body>
     <script type="module" src="index.js"></script>
 </html>

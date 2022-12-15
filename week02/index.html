@@ -11,6 +11,247 @@
 <body>
     <div class="main-header">
         <h1>Week 02 Notes</h1>
+        <p>
+            Chapter 2: Programming Basics
+<br><br>
+Single line comments starting with // and finishing at the end of the line:
+<br><br>
+// this is a short comment
+<br><br>
+Multi-line comments starting with /* and finishing with */:
+<br><br>
+/* This is a longer comment
+anything here will be ignored
+This is a useful place to put notes
+*/
+<br><br>
+It’s good practice to write comments in your code. 
+<br><br>
+JavaScript Grammar
+<br><br>
+A JavaScript program is made up of a series of statements. Each statement ends with a new line or semicolon.
+<br><br>
+There’s no need to actually use a semicolon to terminate a statement because JavaScript interpreters use a process called Automatic Semicolon Insertion (ASI). This will attempt to place semicolons at the end of lines for you. However, it can be error-prone and cause a number of automated services such as code minifiers and validators to not work properly.
+<br><br>
+<br><br>
+A block is a series of statements that are collected together inside curly braces:
+<br><br>
+{
+// this is a block containing 2 statements
+    const message = 'Hello!';
+    alert(message);
+}
+<br><br>
+Blocks do not need to be terminated by a semicolon.
+<br><br>
+Primitive Data Types:
+<br><br>
+• String
+• Symbol (The symbol primitive data type was only introduced in ES6.)
+• Number
+• Boolean
+• Undefined
+• Null
+<br><br>
+JavaScript has a special operator called typeof for finding out the type of a value.
+<br><br>
+<br><br>
+Variables:
+<br><br>
+Variables are used in programming languages to refer to a value stored in memory.
+<br><br>
+Variables have to be declared before they can be used. From ES6 onwards, JavaScript uses the keywords const and let to declare variables. The keyword const is used when the variable will not be reassigned to another value, whereas let is used if the variable might be reassigned later in the program.
+<br><br>
+You can even declare and assign multiple variables at the same time if you separate them with commas:
+<br><br>
+let x = 3, y = 4, z = 5;
+<br><br>
+Variables that have been declared using the let keyword can be reassigned to another value at some point later in the program. 
+<br><br>
+const means you can't reassign the variable to another value. 
+<br><br>
+If the variable references a non-primitive data type, such as an array, function or object, then using const will not make it immutable. This means the underlying data inside the object can change (known as mutating the object).
+<br><br>
+Scope
+<br><br>
+Let and const are both block scoped meaning that the value declare in the block only exist were they are called.
+<br><br>
+Global Scope 
+<br><br>
+Any variable declare outside of a block is considered a Global in scope. They are accessible everywhere in the program.
+<br><br>
+Local scope
+<br><br>
+Any variable defined within a declaration block using let or const can only used within the block and not accessible outside the block.
+<br><br>
+Variables that start with an underscore generally refer to private properties and methods, so it's best to not follow this convention for your own variable names.
+The $ character is also used by the popular jQuery library, so using this in your variable names may also cause problems.
+<br><br>
+Different ways to create a string:
+<br><br>
+new String("hello")
+<< [String: 'hello']
+<br><br>
+Different ways to escape the quotation mark:
+'It\'s me'
+<br><br>
+The backslash is used to escape special characters in strings such as:
+	• Single quote marks \'
+	• Double quote marks \"
+	• End of line \n
+	• Carriage return \r
+	• Tab \t
+If you want to actually write a backslash, you need to escape it with another backslash:
+<br><br>
+Template Literals
+<br><br>
+Template literals use the backtick character, `, to deliminate the string
+<br><br>
+Template literals can also contain line breaks, which are all converted into a Line Feed (\n):
+<br><br>
+`This is the start ...
+<br><br>
+
+.... and this is the end`
+<< 'This is the start ...\n\n\n.... and this is the end'
+
+<br><br>
+
+
+Chapter 3: Arrays, Logic, and Loops
+<br><br>
+Arrays
+Arrays are ordered list of values.
+<br><br>
+To create an array you can do either of the 2 following syntax. Both will create empty arrays
+const myArray = [];
+<< []
+<br><br>
+Or 
+<br><br>
+const myArray = new Array();
+<< []
+<br><br>
+The first index in an array starts with the number 0.
+Example
+heroes[0] = 'Superman';
+<br><br>
+Array Literals 
+We can create an array literal using square brackets that already contain some initial values, so there’s no need to add each value one by one. Here's an example:
+<br><br>
+const avengers = ['Captain America', 'Iron Man', 'Thor', 'Hulk'];
+<< ['Captain America', 'Iron Man', 'Thor', 'Hulk']
+<br><br>
+In the example above multiple values are added all at once instead of one at a time.
+<br><br>
+Removing values from arrays
+<br><br>
+delete avengers[3];
+<< true
+<br><br>
+Would result in:
+<br><br>
+avengers;
+<< ['Captain America', 'Iron Man', 'Thor', undefined]
+
+<br><br>
+It got rid of the value of "Hulk" however it the spaced it occupied remained that is why it now shows as "undefined". Be careful since this can even trip up experienced developers .
+<br><br>
+Array Properties and Methods
+<br><br>
+find the length of an array, we can use the length property:
+<br><br>
+avengers.length;
+<< 6
+<br><br>
+To find the last item in an array without knowing the last index key we can use the following syntax with the example array. It will return the last value.
+<br><br>
+avengers[avengers.length - 1];
+<< 'Black Widow'
+<br><br>
+Pop, Push, Shift, and Unshift
+<br><br>
+avengers.pop();
+<< 'Thor'
+<br><br>
+The pop() method removes the last item of the array. Below is the result of using pop()
+<br><br>
+avengers
+<< ['Captain America', 'Iron Man']
+<br><br>
+The shift() is similar to pop() but it removes the first item. If we use shift() it would remove "Captain America"
+<br><br>
+avengers.shift();
+<< 'Captain America'
+<br><br>
+The push() is used to append a new value to the end of the array. See example below
+<br><br>
+avengers.push('Thor');
+<< 2
+<br><br>
+This example added "Thor" to the end of the array and it return the length of the array
+<br><br>
+The unshift() appends items to the beginning of the array.
+<br><br>
+avengers.unshift('Captain America');
+<< 3
+<br><br>
+Merging Arrays
+<br><br>
+The concat() method can be used to merge an array with one or more arrays:
+<br><br>
+avengers.concat(['Hulk','Hawkeye', 'Black Widow']);
+<< ['Captain America', 'Iron Man', 'Thor', 'Hulk', 'Hawkeye', 'Black Widow']
+<br><br>
+Concat merged "hulk, hawkeye, black widow" into our existing avengers array.
+<br><br>
+The spread operator is three dots, ... that are placed in front of an array, with the effect of spreading out the elements of that array. This can be used to spread the elements of two arrays and put them together in a new array,
+
+Arrow Functions
+
+<br><br>
+Arrow functions can be identified by the 'arrow' symbol, => that gives them their name. The parameters come before the arrow and the main body of the function comes after. Arrow functions are always anonymous, so if you want to refer to them, you must assign them to a variable. For example, the square function we wrote earlier can be written like so:
+<br><br>
+const square = x => x*x;
+<br><br>
+Arrow functions have a number of advantages over other ways of declaring functions:
+	• They are much less verbose than normal function declarations.
+	• Single parameters don't need putting into parentheses.
+	• The body of the function doesn't need placing inside a block if it's only one line.
+	• The return keyword isn't required if the return statement is the only statement in the body of the function.
+	• They don't bind their own value of this to the function (we'll see why this is a particularly useful property when we cover objects later in the book).
+
+Arrow functions seem to be a better alternative to switch to type less when creating functions. Need to try it out.
+<br><br>
+
+Callbacks
+<br><br>
+functions can also be given as a parameter to another function. A function that is passed as an argument to another is known as a callback.
+<br><br>
+
+Example:
+<br><br>
+function sing(song) {
+    console.log(`I'm singing along to ${song}`);
+}
+<br><br>
+sing('Let It Go')
+<< 'I'm singing along to Let It Go'
+<br><br>
+
+We can make the sing() function more flexible by adding a callback parameter:
+
+<br><br>
+function sing(song,callback) {
+    console.log(`I'm singing along to ${song}.`);
+    callback();
+}
+<br><br>
+The callback is provided as a parameter, then invoked inside the body of the function.
+<br><br>
+I need to look more into the callback() and how to use it
+<br><br>
+        </p>
     </div>
 </body>
 </html>

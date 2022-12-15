@@ -3,6 +3,9 @@ body{
     flex-direction: column;
     align-items: center;
     background-color: grey;
+    background-image: url('./images/ocean.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 #grid{
     background-color: aqua;
@@ -29,4 +32,29 @@ body{
     max-width: 100%;
     text-align: center;
     border-radius: 3px;
+}
+#gameboard-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+.dual-boards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+.button{
+    background-color: white;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
 }

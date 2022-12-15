@@ -13,24 +13,12 @@ const links = [
         url: "week03/index.html"
     },
     {
-        label: "Week 3 team activity",
-        url: "teamWeek03/index.html"
-    },
-    {
         label: "Week 4 Notes",
         url: "week04/index.html"
     },
     {
-        label: "Week 4 team activity",
-        url: "teamWeek04/index.html"
-    },
-    {
         label: "Week 5 Notes",
         url: "week05/index.html"
-    },
-    {
-        label: "Week 5 team activity",
-        url: "teamWeek05/index.html"
     },
     {
         label: "Midterm: Todo App",
@@ -41,8 +29,16 @@ const links = [
         url: "week07/index.html"
     },
     {
-        label: "Week 7 team activity",
-        url: "teamWeek07/index.html"
+        label: "Week 8 Notes",
+        url: "week08/index.html"
+    },
+    {
+        label: "Week 9 Notes",
+        url: "week09/index.html"
+    },
+    {
+        label: "Final Project: Battleship Game",
+        url: "Block2Challenge/index.html"
     }
 
 ]
